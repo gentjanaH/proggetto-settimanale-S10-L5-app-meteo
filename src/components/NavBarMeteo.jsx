@@ -1,10 +1,12 @@
 import { Col, Container, Nav, Navbar, NavDropdown, Row } from 'react-bootstrap';
 import SearchBarMeteo from "./SearchBarMeteo";
-
+import { Link, useLocation } from 'react-router-dom'
 
 
 
 const NavBarMeteo = function (props) {
+    const location = useLocation()
+
     return (
         <Navbar expand="md" className="sfondo-nav">
             <Container fluid className="m-0">
@@ -13,12 +15,16 @@ const NavBarMeteo = function (props) {
                         <Navbar.Brand href="#home">
                             <img src="public/sunny-rainy-cloudy-weather-icons_1308-126268-removebg-preview.png" width={"100px"} height={"100px"} />
                         </Navbar.Brand>
-                        <Nav.Link href="#home" className="fs-3 me-2 fw-bold titolo" >MyMeteo</Nav.Link>
+                        <Link to="/"
+                            className={`nav-link fs-3 me-2 fw-bold titolo ${location.pathname === "/" ? "active" : ""
+                                }`} >MyMeteo</Link>
                         <Navbar.Toggle aria-controls="basic-navbar-nav" />
                         <Navbar.Collapse id="basic-navbar-nav " className="w-50 h-50">
 
                             <Nav >
-                                <Nav.Link href="#home">Home</Nav.Link>
+                                <Link to="/"
+                                    className={`nav-link  ${location.pathname === "/" ? "active" : ""
+                                        }`} >Home</Link>
                                 <Nav.Link href="#link">Link</Nav.Link>
                                 <NavDropdown title="Dropdown" id="basic-nav-dropdown">
                                     <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
