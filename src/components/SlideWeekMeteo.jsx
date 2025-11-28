@@ -9,6 +9,7 @@ const SlideWeekMeteo = function (props) {
     return (
         <>
 
+
             {props.lista.map((item, i) => (
 
 
