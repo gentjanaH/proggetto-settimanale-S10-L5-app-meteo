@@ -9,7 +9,7 @@ function FooterMeteo() {
                     <Col
                         xs={12}
                         md={10}
-                        className="text-center  text-md-start text-light my-4"
+                        className="text-center text-light my-4"
                     >
                         <span className="me-2"><i className="bi bi-facebook"></i></span>
                         <span className="me-2"><i className="bi bi-instagram"></i></span>
@@ -18,7 +18,7 @@ function FooterMeteo() {
                     </Col>
 
 
-                    <Col xs={12} md={6} className="text-center text-md-start text-light">
+                    <Col xs={12} md={6} className="text-center text-light">
 
                         <p className="m-0 fs-6">
                             <a className="text-decoration-none text-light" href="#">Media Center</a>
@@ -35,7 +35,7 @@ function FooterMeteo() {
 
 
 
-                    <Col xs={12} md={6} className="text-center text-md-start text-light">
+                    <Col xs={12} md={6} className="text-center text-light">
                         <p className="m-0 fs-6">
                             <a className="text-decoration-none text-light" href="#">Help Center</a>
                         </p>

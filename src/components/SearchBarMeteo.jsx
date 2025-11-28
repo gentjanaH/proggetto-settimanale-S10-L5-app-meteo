@@ -1,8 +1,7 @@
 import { Form, InputGroup } from 'react-bootstrap';
 
 
-function SearchBarMeteo
-    ({ value, onSearch }) {
+const SearchBarMeteo = function ({ value, onSearch }) {
     return (
 
         <InputGroup className=" w-75 w-md-25  mt-sm-2 mt-md-0 me-2">

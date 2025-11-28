@@ -24,12 +24,10 @@ const App = function () {
       <BrowserRouter>
         <NavBarMeteo onSearch={searchACity} value={searchInput} />
         <SezioneStatica />
+        <MainSection searchInput={searchInput} />
         <Routes>
-          <Route path="/"
-            element={
-              searchInput ? (<MainSection searchInput={searchInput} />) : (<SezioneStatica />)}></Route>
-          <Route path="/dailyMeteo" element={<Carosello searchInput={searchInput} />}></Route>
-          <Route path="*" element={<NotFound />}></Route>
+          <Route path="/dailyMeteo" element={<Carosello searchInput={searchInput} />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
         <FooterMeteo />
       </BrowserRouter >
