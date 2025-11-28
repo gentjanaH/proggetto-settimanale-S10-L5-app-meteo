@@ -4,9 +4,9 @@ import SearchBarMeteo from "./SearchBarMeteo";
 
 
 
-const NavBarMeteo = function () {
+const NavBarMeteo = function (props) {
     return (
-        <Navbar expand="md" className="bg-body-tertiary ">
+        <Navbar expand="md" className="sfondo">
             <Container fluid className="m-0">
                 <Row className="d-flex justify-content-between w-100 align-items-center">
                     <Col xs={12} md={6} className="d-flex justify-content-between align-items-center">
@@ -15,7 +15,7 @@ const NavBarMeteo = function () {
                         </Navbar.Brand>
                         <Nav.Link href="#home" className="fs-3 me-2 fw-bold titolo" >MyMeteo</Nav.Link>
                         <Navbar.Toggle aria-controls="basic-navbar-nav" />
-                        <Navbar.Collapse id="basic-navbar-nav w-50 h-50">
+                        <Navbar.Collapse id="basic-navbar-nav " className="w-50 h-50">
 
                             <Nav >
                                 <Nav.Link href="#home">Home</Nav.Link>
@@ -35,7 +35,7 @@ const NavBarMeteo = function () {
                         </Navbar.Collapse>
                     </Col>
                     <Col xs={12} md={6} className="d-flex justify-content-center">
-                        <SearchBarMeteo />
+                        <SearchBarMeteo onSearch={props.onSearch} value={props.value} />
                     </Col>
                 </Row>
 

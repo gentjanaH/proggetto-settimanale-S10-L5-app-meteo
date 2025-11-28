@@ -2,7 +2,7 @@ import { Form, InputGroup } from 'react-bootstrap';
 
 
 function SearchBarMeteo
-    () {
+    ({ value, onSearch }) {
     return (
 
         <InputGroup className=" w-75 w-md-25  mt-sm-2 mt-md-0 me-2">
@@ -12,6 +12,14 @@ function SearchBarMeteo
             <Form.Control
                 aria-label="Default"
                 aria-describedby="inputGroup-sizing-default"
+                placeholder="City, State"
+                value={value}
+                onChange={(e) => onSearch(e.target.value)}
+                onKeyDown={(e) => {
+                    if (e.key === "Enter") {
+                        onSearch(e.target.value)
+                    }
+                }}
             />
         </InputGroup>
 

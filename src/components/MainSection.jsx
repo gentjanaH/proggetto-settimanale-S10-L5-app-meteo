@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Col, Container, Row, Card, Button } from 'react-bootstrap';
 
-const MainSection = function () {
+const MainSection = function (props) {
     const KEY = "ed6d5230ffc307617d1abc1b080b6590"
     const [dati, setDati] = useState({
         città: "",
@@ -9,10 +9,13 @@ const MainSection = function () {
         min: "",
         max: "",
         dataOra: "",
-        umidità: 0
+        umidità: 0,
+        descrizione: "",
+        icona: null
+
     })
 
-    const getWather = function (query) {
+    const getWeather = function (query) {
         const URL = `https://api.openweathermap.org/data/2.5/weather?q=${query}&appid=${KEY}&units=metric`
 
         fetch(URL)
@@ -32,7 +35,9 @@ const MainSection = function () {
                     min: res.main.temp_min,
                     max: res.main.temp_max,
                     dataOra: new Date().toLocaleDateString(),
-                    umidità: res.main.humidity
+                    umidità: res.main.humidity,
+                    descrizione: res.weather[0].description,
+                    icona: res.weather[0].icon
                 }))
                 console.log(res)
             })
@@ -42,24 +47,61 @@ const MainSection = function () {
     }
 
     useEffect(() => {
-        getWather("Milan,It")
-    }, [])
+        if (props.searchInput) {
+            getWeather(props.searchInput)
+        }
+
+    }, [props.searchInput])
 
     return (
-        <Container fluid >
+        <Container fluid className="sfondo" >
             <Row className="justify-content-center">
+                <Row className="my-3">
 
-                <Card >
-                    <Card.Img variant="top" src="holder.js/100px180" />
-                    <Card.Body>
-                        <Card.Title>{dati.città}</Card.Title>
-                        <Card.Text>
-                            {dati.temperatura} °C
-                            {dati.dataOra}
-                        </Card.Text>
-                        <Button variant="primary">Go somewhere</Button>
-                    </Card.Body>
-                </Card>
+                    <Col xs={12} className="text-center">
+                        <h2 className="titolo fs-1 fw-bold d-inline-block me-4 ">{dati.città}</h2>
+
+
+                        {dati.icona && (
+                            <img
+                                src={`https://openweathermap.org/img/wn/${dati.icona}@2x.png`}
+                                alt={dati.descrizione} />
+                        )
+
+                        }
+                    </Col>
+                </Row>
+
+                <Col xs={6} className="text-center mb-4">
+                    <h4 className="sottoTitoli">Data & Ora</h4>
+                    <p className="fs-4 fw-bold dati"> {dati.dataOra}</p>
+                </Col>
+                <Col xs={6} className="text-center mb-4">
+                    <h4 className="sottoTitoli">Descrizione</h4>
+                    <p className="fs-4 fw-bold dati"> {dati.descrizione}</p>
+                </Col>
+
+                <Col xs={6} className="text-center mb-4">
+                    <h4 className="sottoTitoli">Temperatura reale</h4>
+                    <p className="fs-4 fw-bold dati">{dati.temperatura} °C</p>
+                </Col>
+                <Col xs={6} className="text-center mb-4">
+                    <h4 className="sottoTitoli">Umidità</h4>
+                    <p className="fs-4 fw-bold dati"> {dati.umidità} %</p>
+                </Col>
+                <Row>
+                    <Col xs={6} className="text-center mb-4" >
+                        <h4 className="sottoTitoli">Min previste</h4>
+                        <p className="fs-4 fw-bold dati">{dati.min} °C</p>
+                    </Col>
+                    <Col xs={6} className="text-center mb-4">
+                        <h4 className="sottoTitoli">Min previste</h4>
+                        <p className="fs-4 fw-bold dati">{dati.max} °C</p>
+                    </Col>
+                </Row>
+
+
+
 
             </Row>
         </Container>
