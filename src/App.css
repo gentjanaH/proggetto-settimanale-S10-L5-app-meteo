@@ -1,7 +1,7 @@
 .titolo {
     font-family: "Trebuchet MS", sans-serif;
 
-    color: #2a9d8f !important;
+    color: #0d515d !important;
 
 }
 
@@ -9,14 +9,24 @@
     font-family: Georgia, 'Times New Roman', Times, serif;
     font-size: 1.5em;
     font-weight: bolder;
-    color: #429b7dc7
+    color: #216384c7
 }
 
 .dati {
-    color: #2a9d8f;
+    color: #2050c1;
     font-style: italic;
 }
 
-.sfondo {
-    background: linear-gradient(45deg, #32a7ad, #00000000)
+.sfondo-nav {
+    background: linear-gradient(45deg, #39898d, #6fb4c3e2)
+}
+
+.sfondo-main {
+
+    background: linear-gradient(45deg, #64afb3, #ddeff3e2)
+}
+
+.sfondo-carosello {
+
+    background: linear-gradient(45deg, #75c7cc, #b6d4d4e8)
 }

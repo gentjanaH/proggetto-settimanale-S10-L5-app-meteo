@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Col, Container, Row, Card, Button } from 'react-bootstrap';
+import { useNavigate } from 'react-router-dom'
 
 const MainSection = function (props) {
     const KEY = "ed6d5230ffc307617d1abc1b080b6590"
@@ -14,7 +15,7 @@ const MainSection = function (props) {
         icona: null
 
     })
-
+    const navigate = useNavigate()
     const getWeather = function (query) {
         const URL = `https://api.openweathermap.org/data/2.5/weather?q=${query}&appid=${KEY}&units=metric`
 
@@ -54,7 +55,7 @@ const MainSection = function (props) {
     }, [props.searchInput])
 
     return (
-        <Container fluid className="sfondo" >
+        <Container fluid className="sfondo-main" >
             <Row className="justify-content-center">
                 <Row className="my-3">
 
@@ -97,6 +98,19 @@ const MainSection = function (props) {
                     <Col xs={6} className="text-center mb-4">
                         <h4 className="sottoTitoli">Min previste</h4>
                         <p className="fs-4 fw-bold dati">{dati.max} °C</p>
+                    </Col>
+                </Row>
+                <Row className=" my-3">
+                    <Col className="d-flex justify-content-center ">
+                        <Button className="bg-info text-light rounded-pill border-0">Dettagli</Button>
+                    </Col>
+                    <Col className="d-flex justify-content-center">
+                        <Button
+                            className="bg-info text-light rounded-pill border-0"
+                            onClick={() => {
+
+                                navigate('/dailyMeteo')
+                            }}>Meteo nei prossimi giorni</Button>
                     </Col>
                 </Row>
 
